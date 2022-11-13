@@ -49,8 +49,7 @@ for y in range(len(power)):  # a for loop relative to the length of the power li
         d_final.append(derivative)  # term disappears
     else:
         derivative = f'{int(co[y]) * int(power[y])}x^{int(power[y]) - 1}'  # and this is for when the exponent of the
-        d_final.append(
-            derivative)  # derivative is not 0 or 1 (most situations)
+        d_final.append(derivative)                                             # derivative is not 0 or 1 (most cases) 
 
-print(*d_final, sep='+')  # This final line is to separate each derivative in the list and insert a '+' in between each
-# to ensure that the original format of the input function ios maintained
+print(*d_final, sep=' + ')  # This final line is to separate each derivative in the list and insert a '+' in between each
+# to ensure that the original format of the input function is maintained
