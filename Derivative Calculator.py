@@ -3,7 +3,7 @@ input_function = input_function.replace(' ', '')
 function = input_function.split('+')
 
 power = []  # two empty lists, one for the coefficients and one for the exponents so that when these values are found
-co = []  # they can be appended into each specific list
+co = []                                                                # they can be appended into each specific list
 
 for func in function:
     if func.count('^') == 0:  # checks for a caret, which thus checks if there is an exponent present
@@ -29,27 +29,27 @@ for func in function:
                 if func[func.index('^') + 1] == '(':  # this is for when the exponent input is in parentheses
                     start = func.index('(') + 1  # a range is used, produced in terms of the index of the parentheses
                     try:
-                        end = func.index(')')  # when the user forgets a closing bracket and error message alerts them
+                        end = func.index(')')  # when the user forgets a closing bracket an error message alerts them
                     except:
                         print('OOPS! ERROR: did you forget a closing bracket?')
                         continue
                     power.append(func[start:end])  # once the index of the parentheses is found it isolates the exponent
-                else:  # and appends it to the power list
+                else:                                                                 # and appends it to the power list
                     pow_sing = func[func.index('^') + 1]  # this is for when the exponent is not in parentheses
                     power.append(pow_sing)
 
 d_final = []  # this is an empty list for the derivative of each separate function
 
-for y in range(len(power)):  # a for loop relative to the length of the power list is used to specify specific
-    if int(power[y]) - 1 == 1:  # circumstances of exponents
+for y in range(len(power)):  # a for loop relative to the length of the power list is used to differentiate specific
+    if int(power[y]) - 1 == 1:                                           # circumstances of exponents in derivatives
         derivative = f'{int(co[y]) * int(power[y])}x'  # this is for when the exponent of the derivative is 1
         d_final.append(derivative)
     if int(power[y]) - 1 == 0:
         derivative = f'{int(co[y]) * int(power[y])}'  # this is for when the exponent of the derivative is 0, thus the x
-        d_final.append(derivative)  # term disappears
+        d_final.append(derivative)                                                                     # term disappears
     else:
         derivative = f'{int(co[y]) * int(power[y])}x^{int(power[y]) - 1}'  # and this is for when the exponent of the
         d_final.append(derivative)                                             # derivative is not 0 or 1 (most cases) 
 
 print(*d_final, sep=' + ')  # This final line is to separate each derivative in the list and insert a '+' in between each
-# to ensure that the original format of the input function is maintained
+                                                 # to ensure that the original format of the input function is maintained
